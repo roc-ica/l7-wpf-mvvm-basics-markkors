@@ -16,6 +16,7 @@ namespace WpfApp7.ViewModel
         public MainWindowViewModel()
         {
             ba1 = new Model.BankAccount(100);
+            // make the viewmodel the listener of the model
             MyAccount = ba1;
         }
       
