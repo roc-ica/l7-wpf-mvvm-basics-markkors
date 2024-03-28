@@ -54,11 +54,9 @@ namespace WpfApp7
         #region event handlers
 
 
-        private void doDeposit(object sender, RoutedEventArgs e)
+       /* private void doDeposit(object sender, RoutedEventArgs e)
         {
-
-
-            decimal amount = decimal.Parse(txtAmount.Text);
+           decimal amount = decimal.Parse(txtAmount.Text);
             //ba1.Deposit(amount);
             //updateDisplay();
             _viewModel.SelectedBankAccount.Deposit(amount);
@@ -71,7 +69,7 @@ namespace WpfApp7
             decimal amount = decimal.Parse(txtAmount.Text);  
             _viewModel.SelectedBankAccount.Withdraw(amount);
         }
-
+*/
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cb = (ComboBox)sender; 

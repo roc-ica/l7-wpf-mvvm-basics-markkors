@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WpfApp7.Model;
 
 namespace WpfApp7.ViewModel
@@ -13,6 +14,10 @@ namespace WpfApp7.ViewModel
         // create a Generic List of bankaccounts
         private List<BankAccount> _bankaccounts = new List<BankAccount>();
         private BankAccount _SelectedBankAccount;
+
+        // commands
+        public ICommand DepositCommand { get; }
+        public ICommand WithdrawCommand { get; }
 
 
         // constructor
@@ -28,6 +33,11 @@ namespace WpfApp7.ViewModel
                 _bankaccounts.Add(new BankAccount(rnd.Next(100, 1000),number));
 
             }
+
+            // Initialize your commands
+            DepositCommand = new RelayCommand(DoDeposit);
+            WithdrawCommand = new RelayCommand(DoWithdraw);
+
             BankAccounts = _bankaccounts.ToArray();
 
             // set the first bankaccount as the selected one
@@ -35,6 +45,21 @@ namespace WpfApp7.ViewModel
             
         }
 
+        private void DoDeposit(object parameter)
+        {
+            if (parameter is string amountString && decimal.TryParse(amountString, out decimal amount))
+            {
+                SelectedBankAccount.Deposit(amount);
+            }
+        }
+
+        private void DoWithdraw(object parameter)
+        {
+            if (parameter is string amountString && decimal.TryParse(amountString, out decimal amount))
+            {
+                SelectedBankAccount.Withdraw(amount);
+            }
+        }
 
         public BankAccount[] BankAccounts { get; set; }
 

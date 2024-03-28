@@ -38,16 +38,20 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Grid.Row="1"
-                    Content="Storten"
-                    Click="doDeposit" />
+           
             <TextBox Grid.Row="2"
                      Text="0.00"
                      FontSize="50"
                      x:Name="txtAmount" />
-            <Button Grid.Row="3"
-                    Content="Opnemen"
-                    Click="doWithdraw" />
+           
+
+            <Button Content="Deposit" Grid.Row="1"
+                    Command="{Binding DepositCommand}"
+                    CommandParameter="{Binding ElementName=txtAmount, Path=Text}" />
+            <Button Content="Withdraw" Grid.Row="3"
+                    Command="{Binding WithdrawCommand}"
+                    CommandParameter="{Binding ElementName=txtAmount, Path=Text}" />
+
 
         </Grid>
 
