@@ -63,7 +63,7 @@ namespace WpfApp7
             decimal amount = decimal.Parse(txtAmount.Text);
             //ba1.Deposit(amount);
             //updateDisplay();
-            _viewModel.ba1.Deposit(amount);
+            _viewModel.MyAccount.Deposit(amount);
            // _viewModel.OnPropertyChanged("Balance");
 
         }
@@ -71,7 +71,7 @@ namespace WpfApp7
         private void doWithdraw(object sender, RoutedEventArgs e)
         {
             decimal amount = decimal.Parse(txtAmount.Text);  
-            _viewModel.ba1.Withdraw(amount);
+            _viewModel.MyAccount.Withdraw(amount);
            
 
         }

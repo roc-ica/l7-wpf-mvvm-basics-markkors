@@ -3,18 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp7.ViewModel"
+        xmlns:local="clr-namespace:WpfApp7"
+        xmlns:vm="clr-namespace:WpfApp7.ViewModel"
         mc:Ignorable="d"
         Title="My Bank"
         Height="450"
-        Width="800"
-        >
+        Width="800">
     <Window.DataContext>
-        <local:MainWindowViewModel x:Name="MyViewModel" />
+        <vm:MainWindowViewModel x:Name="MyViewModel" />
     </Window.DataContext>
-    
+
     <Window.Resources>
-        
+
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,21 +30,22 @@
             <Button Grid.Row="0"
                     Content="Storten"
                     Click="doDeposit" />
-            <TextBox Grid.Row="1" Text="0.00"
-                     FontSize="50" x:Name="txtAmount"/>
+            <TextBox Grid.Row="1"
+                     Text="0.00"
+                     FontSize="50"
+                     x:Name="txtAmount" />
             <Button Grid.Row="2"
                     Content="Opnemen"
                     Click="doWithdraw" />
 
         </Grid>
-        
+
         <TextBlock Grid.Column="1"
                    x:Name="txtBalance"
-                     Text="{Binding Path=MyAccount.Balance}"
+                   Text="{Binding Path=MyAccount.Balance}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontSize="50" 
-                   />
+                   FontSize="50" />
 
     </Grid>
 </Window>

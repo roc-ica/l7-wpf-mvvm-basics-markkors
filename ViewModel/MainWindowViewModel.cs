@@ -10,21 +10,21 @@ namespace WpfApp7.ViewModel
 {
     internal class MainWindowViewModel : INotifyPropertyChanged
     {
-        public Model.BankAccount ba1;
+        private  Model.BankAccount _ba1;
 
         // constructor
         public MainWindowViewModel()
         {
-            ba1 = new Model.BankAccount(100);
+            _ba1 = new Model.BankAccount(100);
             // make the viewmodel the listener of the model
-            MyAccount = ba1;
+            MyAccount = _ba1;
         }
       
         public BankAccount MyAccount { 
             
-            get { return ba1; } 
+            get { return _ba1; } 
             set {
-                ba1 = value;
+                _ba1 = value;
             } 
         }
 
