@@ -11,7 +11,7 @@ namespace WpfApp7.ViewModel
     internal class MainWindowViewModel : INotifyPropertyChanged
     {
         // create a Generic List of bankaccounts
-        private List<BankAccount> _bankaccounts = new List<BankAccount>();
+        private readonly List<BankAccount> _bankaccounts = new List<BankAccount>();
         private BankAccount _SelectedBankAccount;
 
 
