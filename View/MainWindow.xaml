@@ -26,15 +26,26 @@
                 <RowDefinition Height="0.5*" />
                 <RowDefinition Height="0.5*" />
                 <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
             </Grid.RowDefinitions>
-            <Button Grid.Row="0"
+            <ComboBox ItemsSource="{Binding BankAccounts}"
+                      SelectedItem="{Binding SelectedBankAccount, Mode=TwoWay}"
+                      SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Definieer hier hoe elk item moet worden weergegeven -->
+                        <TextBlock Text="{Binding AccountNr}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Grid.Row="1"
                     Content="Storten"
                     Click="doDeposit" />
-            <TextBox Grid.Row="1"
+            <TextBox Grid.Row="2"
                      Text="0.00"
                      FontSize="50"
                      x:Name="txtAmount" />
-            <Button Grid.Row="2"
+            <Button Grid.Row="3"
                     Content="Opnemen"
                     Click="doWithdraw" />
 
@@ -42,7 +53,7 @@
 
         <TextBlock Grid.Column="1"
                    x:Name="txtBalance"
-                   Text="{Binding Path=MyAccount.Balance}"
+                   Text="{Binding Path=SelectedBankAccount.Balance}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="50" />

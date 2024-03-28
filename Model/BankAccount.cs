@@ -12,11 +12,13 @@ namespace WpfApp7.Model
         private decimal _saldo;
 
         // constructor
-        public BankAccount(decimal saldo)
+        public BankAccount(decimal saldo,string number)
         {
             _saldo = saldo;
-          
+            AccountNr= number;
         }
+
+        public string AccountNr { get; set; }
 
         // properties
         public decimal Balance { 

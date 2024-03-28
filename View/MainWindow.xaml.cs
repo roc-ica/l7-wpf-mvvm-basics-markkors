@@ -41,8 +41,6 @@ namespace WpfApp7
             
 
 
-
-
         }
 
         #region methods
@@ -63,7 +61,7 @@ namespace WpfApp7
             decimal amount = decimal.Parse(txtAmount.Text);
             //ba1.Deposit(amount);
             //updateDisplay();
-            _viewModel.MyAccount.Deposit(amount);
+            _viewModel.SelectedBankAccount.Deposit(amount);
            // _viewModel.OnPropertyChanged("Balance");
 
         }
@@ -71,9 +69,17 @@ namespace WpfApp7
         private void doWithdraw(object sender, RoutedEventArgs e)
         {
             decimal amount = decimal.Parse(txtAmount.Text);  
-            _viewModel.MyAccount.Withdraw(amount);
-           
+            _viewModel.SelectedBankAccount.Withdraw(amount);
+        }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender; 
+            BankAccount sb = (BankAccount)cb.SelectedItem;
+            if(sb != null && _viewModel !=null)
+            {
+                _viewModel.SelectedBankAccount = sb;
+            }   
         }
 
         #endregion

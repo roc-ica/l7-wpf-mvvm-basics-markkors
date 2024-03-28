@@ -10,22 +10,41 @@ namespace WpfApp7.ViewModel
 {
     internal class MainWindowViewModel : INotifyPropertyChanged
     {
-        private  Model.BankAccount _ba1;
+        // create a Generic List of bankaccounts
+        private List<BankAccount> _bankaccounts = new List<BankAccount>();
+        private BankAccount _SelectedBankAccount;
+
 
         // constructor
         public MainWindowViewModel()
         {
-            _ba1 = new Model.BankAccount(100);
-            // make the viewmodel the listener of the model
-            MyAccount = _ba1;
-        }
-      
-        public BankAccount MyAccount { 
+            // create a random number generator
+            Random rnd = new Random();
+            // fill the list with 5 bankaccounts
+            for (int i = 0; i < 5; i++)
+            {
+                // add a random amount of money to the bankaccount
+                string number = "NL45 ABN " + rnd.Next(100000000, 999999999).ToString();
+                _bankaccounts.Add(new BankAccount(rnd.Next(100, 1000),number));
+
+            }
+            BankAccounts = _bankaccounts.ToArray();
+
+            // set the first bankaccount as the selected one
+            SelectedBankAccount = _bankaccounts[0];
             
-            get { return _ba1; } 
-            set {
-                _ba1 = value;
-            } 
+        }
+
+
+        public BankAccount[] BankAccounts { get; set; }
+
+        public BankAccount SelectedBankAccount
+        {
+            get { return _SelectedBankAccount; }
+            set { 
+                _SelectedBankAccount = value;
+                OnPropertyChanged("SelectedBankAccount");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
