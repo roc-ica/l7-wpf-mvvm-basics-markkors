@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp7.Model;
+using WpfApp7.ViewModel;
 
 namespace WpfApp7
 {
@@ -22,20 +23,33 @@ namespace WpfApp7
     public partial class MainWindow : Window
     {
 
-        private BankAccount ba1;
+        //private BankAccount ba1;
+        // get the viewmodel as datacontext
+        private MainWindowViewModel _viewModel;
+
+
+
         public MainWindow()
         {
             InitializeComponent();
-            ba1 = new BankAccount(100);
+            //ba1 = new BankAccount(100);
             // update the display
-            updateDisplay();
+            //updateDisplay();
+
+            _viewModel = new MainWindowViewModel();
+            this.DataContext = _viewModel;
+            
+
+
+
+
         }
 
         #region methods
-        private void updateDisplay()
+       /* private void updateDisplay()
         {
             txtBalance.Text = ba1.Balance.ToString("C");
-        }
+        }*/
         #endregion
 
 
@@ -47,15 +61,19 @@ namespace WpfApp7
 
 
             decimal amount = decimal.Parse(txtAmount.Text);
-            ba1.Deposit(amount);
-            updateDisplay();
+            //ba1.Deposit(amount);
+            //updateDisplay();
+            _viewModel.MyAccount.Deposit(amount);
+           // _viewModel.OnPropertyChanged("Balance");
+
         }
 
         private void doWithdraw(object sender, RoutedEventArgs e)
         {
-            decimal amount = decimal.Parse(txtAmount.Text);
-            ba1.Withdraw(amount);
-            updateDisplay();
+            decimal amount = decimal.Parse(txtAmount.Text);  
+            _viewModel.MyAccount.Withdraw(amount);
+           
+
         }
 
         #endregion

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Data.Odbc;
 
 namespace WpfApp7.Model
 {
-    internal class BankAccount 
+    internal class BankAccount : INotifyPropertyChanged
     {
        
 
@@ -21,18 +23,26 @@ namespace WpfApp7.Model
             get {
                 return _saldo;
             } 
-           /* set {
+            set {
                 _saldo = value;
-            } */
+                OnPropertyChanged("Balance");
+            } 
         }
 
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
 
         // methods
         public void Deposit(decimal amount)
         {
             _saldo += amount;
+            Balance = _saldo;
+            OnPropertyChanged("Balance");
 
         }
 
@@ -44,6 +54,8 @@ namespace WpfApp7.Model
                 return false;
             }
             _saldo -= amount;
+            Balance = _saldo;
+            OnPropertyChanged("Balance");
 
             return true;
         }
