@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\BankAccount.cs" />
+    <Compile Include="Model\DecimalToEuroConverter.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
